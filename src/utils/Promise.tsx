@@ -1,10 +1,10 @@
 export class MyPromise {
-  public static all(promises: unknown[]) {
+  public static all<T>(promises: readonly (T | PromiseLike<T>)[]): Promise<T[]> {
     let counter = 0;
-    const result: unknown[] = [];
+    const result: Awaited<T[]> = [];
 
     if (promises.length === 0) {
-      return Promise.resolve([]);
+      return Promise.resolve(result);
     }
 
     return new Promise((resolve, reject) => {
