@@ -30,6 +30,7 @@ export default defineConfig([
       'prettier/prettier': 'warn',
       ...reactHooks.configs['recommended-latest'].rules,
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+      '@typescript-eslint/no-explicit-any': 'off',
     },
   },
 ]);

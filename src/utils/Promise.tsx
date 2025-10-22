@@ -64,4 +64,20 @@ export class MyPromise {
       });
     });
   }
+
+  public static resolve<T>(value: T | PromiseLike<T>): Promise<T> {
+    if (value && value instanceof Promise) {
+      return value;
+    }
+
+    if (typeof (value as any).then === 'function') {
+      return new Promise<T>((resolve, reject) => (value as PromiseLike<T>).then(resolve, reject));
+    }
+
+    return new Promise<T>((resolve) => resolve(value));
+  }
+
+  public static reject<T = never>(reason?: unknown): Promise<T> {
+    return new Promise<T>((_, reject) => reject(reason));
+  }
 }
