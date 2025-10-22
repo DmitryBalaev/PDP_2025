@@ -1,6 +1,8 @@
+type TPromiseIterable<T> = readonly (T | PromiseLike<T>)[];
+
 export class MyPromise {
-  public static all<T>(promises: readonly (T | PromiseLike<T>)[]): Promise<T[]> {
-    let counter = 0;
+  public static all<T>(promises: TPromiseIterable<T>): Promise<T[]> {
+    let resolveCount = 0;
     const result: Awaited<T[]> = [];
 
     if (promises.length === 0) {
@@ -12,9 +14,9 @@ export class MyPromise {
         Promise.resolve(promise)
           .then((res) => {
             result[index] = res;
-            counter++;
+            resolveCount++;
 
-            if (counter === promises.length) {
+            if (resolveCount === promises.length) {
               resolve(result);
             }
           })
@@ -24,7 +26,7 @@ export class MyPromise {
   }
 
   public static allSettled<T>(
-    promises: readonly (T | PromiseLike<T>)[]
+    promises: TPromiseIterable<T>
   ): Promise<({ status: 'fulfilled'; value: T } | { status: 'rejected'; reason: unknown })[]> {
     return MyPromise.all(
       promises.map((promise) => {
@@ -37,5 +39,29 @@ export class MyPromise {
         }
       })
     );
+  }
+
+  public static any<T>(promises: TPromiseIterable<T>): Promise<Awaited<T>> {
+    return new Promise((resolve, reject) => {
+      if (promises.length === 0) {
+        return Promise.resolve(promises);
+      }
+
+      let rejectedCount = 0;
+      const errors: unknown[] = [];
+
+      promises.forEach((promise, i) => {
+        Promise.resolve(promise)
+          .then(resolve)
+          .catch((e) => {
+            errors[i] = e;
+            rejectedCount--;
+
+            if (rejectedCount === promises.length) {
+              reject(new AggregateError(errors));
+            }
+          });
+      });
+    });
   }
 }
