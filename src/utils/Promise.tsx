@@ -65,12 +65,22 @@ export class MyPromise {
     });
   }
 
+  public static race<T>(promises: TPromiseIterable<T>): Promise<Awaited<T>> {
+    return new Promise((resolve, reject) => {
+      if (promises.length === 0) {
+        return Promise.resolve(promises);
+      }
+
+      promises.forEach((promise) => Promise.resolve(promise).then(resolve).catch(reject));
+    });
+  }
+
   public static resolve<T>(value: T | PromiseLike<T>): Promise<T> {
     if (value && value instanceof Promise) {
       return value;
     }
 
-    if (typeof (value as any).then === 'function') {
+    if (value && typeof (value as PromiseLike<T>).then === 'function') {
       return new Promise<T>((resolve, reject) => (value as PromiseLike<T>).then(resolve, reject));
     }
 
