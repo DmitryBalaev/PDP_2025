@@ -22,4 +22,20 @@ export class MyPromise {
       });
     });
   }
+
+  public static allSettled<T>(
+    promises: readonly (T | PromiseLike<T>)[]
+  ): Promise<({ status: 'fulfilled'; value: T } | { status: 'rejected'; reason: unknown })[]> {
+    return MyPromise.all(
+      promises.map((promise) => {
+        if (promise instanceof Promise) {
+          return promise
+            .then((value) => ({ status: 'fulfilled', value }) as const)
+            .catch((reason) => ({ status: 'rejected', reason }) as const);
+        } else {
+          return Promise.resolve({ status: 'fulfilled', value: promise } as const);
+        }
+      })
+    );
+  }
 }
