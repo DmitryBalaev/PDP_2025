@@ -1,0 +1,24 @@
+.layout {
+  display: flex;
+  min-height: 100dvh;
+}
+
+.body {
+  max-width: 1200px;
+  margin: 0 auto;
+  line-height: 1.6;
+  flex: 1;
+}
+
+.sidebar {
+  width: 240px;
+  border-right: 1px solid #ddd;
+}
+
+.footer {
+  width: 100%;
+  background-color: #222;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
