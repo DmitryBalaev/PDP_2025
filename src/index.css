@@ -17,7 +17,6 @@ body {
   font-family: 'Segoe UI', sans-serif;
   margin: 0;
   color: #ffffff;
-  padding: 20px;
 }
 
 body::selection {
@@ -76,4 +75,10 @@ code {
   border-radius: 4px;
   line-height: 2;
   width: 100%;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
