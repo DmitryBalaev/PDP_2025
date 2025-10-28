@@ -2,11 +2,6 @@ import { useState, type PropsWithChildren } from 'react';
 import style from './Layout.module.css';
 import { FaArrowRight } from 'react-icons/fa';
 
-const enum IconDirection {
-  right = 'right',
-  left = 'left',
-}
-
 const LayoutBase: React.FC<PropsWithChildren> = ({ children }) => {
   return <div className={style.layout}>{children}</div>;
 };
@@ -20,21 +15,17 @@ const Body: React.FC<PropsWithChildren> = ({ children }) => {
 };
 
 const Sidebar: React.FC<PropsWithChildren> = ({ children }) => {
-  const [direction, setDirection] = useState<IconDirection>(IconDirection.left);
+  const [open, setOpen] = useState(true);
   return (
     <aside className={style.sidebar}>
-      <main
-        className={`${style.sidebar_body} ${direction === 'right' ? style.sidebar__hidden : undefined}`}
-      >
+      <main className={`${style.sidebar_body} ${!open ? style.sidebar__hidden : undefined}`}>
         {children}
       </main>
       <FaArrowRight
         onClick={() => {
-          setDirection((state) =>
-            state === IconDirection.left ? IconDirection.right : IconDirection.left
-          );
+          setOpen((state) => !state);
         }}
-        className={`${style.sidebar_icon} ${style[`sidebar_icon__${direction}`]}`}
+        className={`${style.sidebar_icon} ${style[`sidebar_icon__${open ? 'left' : 'right'}`]}`}
       />
     </aside>
   );
