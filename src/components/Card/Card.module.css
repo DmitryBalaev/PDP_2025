@@ -1,0 +1,41 @@
+.card {
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgb(28, 27, 27);
+  padding: 20px;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.card > div {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.icon {
+  font-size: 28px;
+  color: #2563eb;
+  margin-bottom: 10px;
+}
+
+.card h3 {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+}
+
+.card p {
+  font-size: 0.95rem;
+
+  color: #7f7878;
+  line-height: 1.4;
+}
