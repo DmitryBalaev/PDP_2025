@@ -1,0 +1,37 @@
+.sidebar {
+  padding: 16px;
+  height: 100%;
+  width: 220px;
+}
+
+.menu_list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu_item {
+  margin-bottom: 12px;
+}
+
+.menu_link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  padding: 8px 12px;
+  display: block;
+  border-radius: 6px;
+  /* transition:
+    background-color 0.2s,
+    color 0.2s; */
+}
+
+.menu_link:hover {
+  background-color: #2563eb;
+}
+
+.active {
+  background-color: #2563eb;
+  color: #fff;
+  font-weight: 600;
+}

@@ -29,7 +29,7 @@
 
 .sidebar__hidden {
   width: 16px;
-  visibility: hidden;
+  opacity: 0;
 }
 
 .sidebar_icon {

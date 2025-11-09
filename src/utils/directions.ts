@@ -28,6 +28,7 @@ export const directions: Direction[] = [
     title: 'Доступы и привилегии',
     description:
       'Изучение архитектуры Feature, ProfileStore, HOC withFeature и системы доступа в проекте.',
+    path: 'feature',
   },
   {
     Icon: SiTypescript,
