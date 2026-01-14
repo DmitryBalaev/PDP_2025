@@ -10,6 +10,7 @@ import {
   FEATURE_PROFILE_STORE_PATH,
   FEATURE_HOW_IT_WORK_PATH,
   PROMISE_PATH,
+  STORE_PATH,
 } from './utils/path';
 import {
   FeatureService,
@@ -30,7 +31,10 @@ const Promise = withLazy(
   () => import('./Pages/Promise/Promise'),
   (m) => m.PromiseComponent
 );
-
+const Store = withLazy(
+  () => import('./Pages/Store/Store'),
+  (m) => m.Store
+);
 export interface MenuItem {
   label: string;
   path: string;
@@ -41,6 +45,7 @@ const menuItems = [
   { label: 'Promise', path: PROMISE_PATH },
   { label: 'Роутинг - Проект. withLazyLoader', path: LAZY_PATH },
   { label: 'Доступы - Проект', path: FEATURE_PATH },
+  { label: 'Сторы', path: STORE_PATH },
 ];
 export function App() {
   return (
@@ -60,6 +65,7 @@ export function App() {
               <Route path={FEATURE_PROFILE_STORE_PATH} element={<ProfileStore />} />
               <Route path={FEATURE_HOW_IT_WORK_PATH} element={<HowItWork />} />
             </Route>
+            <Route path={STORE_PATH} Component={Store} />
           </Routes>
         </Layout.Body>
       </BrowserRouter>

@@ -1,0 +1,10 @@
+.container {
+  max-width: 980px;
+  margin: 20px auto;
+  padding: 24px;
+}
+
+.list {
+  list-style: inside;
+  padding-left: 18px;
+}
