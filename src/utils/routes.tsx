@@ -4,6 +4,7 @@ import {
   ROOT_PATH,
   PROMISE_PATH,
   LAZY_PATH,
+  GRAPHQL_PATH,
   FEATURE_PATH,
   FEATURE_SERVICE_PATH,
   FEATURE_PROFILE_STORE_PATH,
@@ -37,6 +38,11 @@ const StorePage = withLazy(
   (m) => m.Store
 );
 
+const GraphqlPage = withLazy(
+  () => import('../Pages/Graphql/Graphql'),
+  (m) => m.Graphql
+);
+
 const routesConfig = [
   {
     path: ROOT_PATH,
@@ -49,6 +55,10 @@ const routesConfig = [
   {
     path: LAZY_PATH,
     element: <WithLazyLoader />,
+  },
+  {
+    path: GRAPHQL_PATH,
+    element: <GraphqlPage />,
   },
   {
     path: FEATURE_PATH,

@@ -18,7 +18,10 @@ export const PromiseComponent: React.FC = () => {
 
   const fetchPost = (id: number) =>
     fetch(`https://jsonplaceholder.typicode.com/posts/${id}`).then((res) => {
-      if (!res.ok) throw new Error(`Ошибка загрузки поста ${id}`);
+      if (!res.ok) {
+        throw new Error(`Ошибка загрузки поста ${id}`);
+      }
+
       return res.json();
     });
 

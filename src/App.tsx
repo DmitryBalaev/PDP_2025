@@ -1,6 +1,6 @@
 import { BrowserRouter } from 'react-router-dom';
 import Layout from './components/Layout/Layout';
-import { ROOT_PATH, LAZY_PATH, FEATURE_PATH, PROMISE_PATH, STORE_PATH } from './utils/path';
+import { ROOT_PATH, LAZY_PATH, FEATURE_PATH, PROMISE_PATH, STORE_PATH, GRAPHQL_PATH } from './utils/path';
 
 import { Navigation } from './components/Navigation/Navigation';
 import { AppRoutes } from './utils/routes';
@@ -14,9 +14,11 @@ const menuItems = [
   { label: 'Домашняя', path: ROOT_PATH },
   { label: 'Promise', path: PROMISE_PATH },
   { label: 'Роутинг - Проект. withLazyLoader', path: LAZY_PATH },
+  { label: 'GraphQL', path: GRAPHQL_PATH },
   { label: 'Доступы - Проект', path: FEATURE_PATH },
   { label: 'Сторы', path: STORE_PATH },
 ];
+
 export function App() {
   return (
     <Layout>

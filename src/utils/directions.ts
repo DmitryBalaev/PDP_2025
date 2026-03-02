@@ -2,6 +2,7 @@ import { type IconType } from 'react-icons';
 import { FaCode, FaProjectDiagram, FaNetworkWired, FaDatabase, FaReact } from 'react-icons/fa';
 import { SiGraphql, SiMobx, SiTypescript } from 'react-icons/si';
 import { GiTestTubes } from 'react-icons/gi';
+import { GRAPHQL_PATH } from './path';
 
 export interface Direction {
   Icon: IconType;
@@ -53,6 +54,7 @@ export const directions: Direction[] = [
     title: 'GraphQL',
     description:
       'Изучение запросов, директив, фрагментов, подписок. Создание pet-проекта с GraphQL API.',
+    path: GRAPHQL_PATH,
   },
   {
     Icon: FaDatabase,

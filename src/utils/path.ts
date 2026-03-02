@@ -3,6 +3,7 @@ export const ROOT_PATH = '/';
 export const PROMISE_PATH = '/promise';
 
 export const LAZY_PATH = '/lazy';
+export const GRAPHQL_PATH = '/graphql';
 
 export const FEATURE_PATH = '/feature';
 export const FEATURE_SERVICE_PATH = `${FEATURE_PATH}/feature-service`;
